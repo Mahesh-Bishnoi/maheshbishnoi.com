@@ -59,6 +59,14 @@ Serve `maheshbishnoi.com` + `www.maheshbishnoi.com` from Cloudflare Workers Stat
 - DNS now (see `dns-backup-2026-10-15.txt`): Cloudflare-managed proxied AAAA (`100::` placeholder) for apex + `www`; TXT `v=spf1 -all`, `_dmarc`, `*._domainkey` untouched. No apex A record needed (edge resolves placeholder).
 - Remaining optional: edge Cache Rule (already seeing `cf-cache-status: HIT`), Web Analytics toggle (dashboard one-click).
 
+## Consolidation 2026-10-15 — Option A (Workers Builds)
+- Found duplicate: Pages project `maheshbishnoi` (`maheshbishnoi.pages.dev`, created 2025-05-05) connected to `Mahesh-Bishnoi/maheshbishnoi.com:main` with `deployments_enabled: true`, empty `build_command`/`destination_dir` — every push built a 404 page. Worker `maheshbishnoi-com` had no Workers Builds config (triggers list empty).
+- Baseline verified: apex 200 HIT, `www` 301 -> apex, `maheshbishnoi.pages.dev` 404.
+- Action taken: disconnected Pages Git source via `DELETE /accounts/.../pages/projects/maheshbishnoi/source` (reversible; project kept for history, auto-builds stopped). Delete project later optional.
+- Local build verified: `npm run build` emits 5 pages (`/`, `/blog/`, `/blog/hello-world/`, `/resume/`, `/404.html`) to `dist/`.
+- Connected 2026-10-15 via dashboard: repo `Mahesh-Bishnoi/maheshbishnoi.com`, branch `main`, root `/`, build `npm run build`, deploy `npx wrangler deploy`, preview `npx wrangler preview`, `auto_build_enabled: true`, `previews_enabled: true`. Trigger `d83c5e60` active, zero builds so far — next push to `main` is the first auto-build test.
+- Rollback A->manual: Builds -> pause/disconnect, back to `npm run deploy`. A->B later: pause Builds, add GHA `wrangler deploy` — same Worker/domains, no DNS change.
+
 ## Resolved decisions
 - Location: this repo `maheshbishnoi.com` holds all code (plan copied here from `cf` folder).
 - Stack: Astro from start, `output: 'static'`, `dist/` deployed to Workers Static Assets.
