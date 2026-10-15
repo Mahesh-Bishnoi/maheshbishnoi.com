@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://maheshbishnoi.com/sitemap-index.xml

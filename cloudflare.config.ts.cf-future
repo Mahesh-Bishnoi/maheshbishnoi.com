@@ -1,0 +1,14 @@
+import { defineConfig } from "cf/config";
+
+export default defineConfig({
+  accountId: "2a8c9c88f4c1b28de68ba60b753acba5",
+  worker: {
+    name: "maheshbishnoi-com",
+    compatibilityDate: "2026-10-15",
+    domains: ["maheshbishnoi.com", "www.maheshbishnoi.com"],
+    assets: {
+      htmlHandling: "auto-trailing-slash",
+      notFoundHandling: "404-page",
+    },
+  },
+});
