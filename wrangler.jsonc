@@ -6,6 +6,10 @@
 		"directory": "./dist",
 		"not_found_handling": "404-page"
 	},
+	"routes": [
+		{ "pattern": "maheshbishnoi.com", "custom_domain": true },
+		{ "pattern": "www.maheshbishnoi.com", "custom_domain": true }
+	],
 	"observability": {
 		"enabled": true
 	}
