@@ -52,6 +52,13 @@ Serve `maheshbishnoi.com` + `www.maheshbishnoi.com` from Cloudflare Workers Stat
 ## Future: migrate to `cf`
 - When `cf` supports Astro 6+ builds (or site moves to plain Vite), run `cf migrate` to convert `wrangler.jsonc` -> `cloudflare.config.ts`. Draft already in `cloudflare.config.ts.cf-future`. Then `cf deploy --dry-run` must emit `.cloudflare/output/v0/config.json` before real deploy.
 
+## Live state (deployed 2026-10-15, commit 6c6527c)
+- Worker `maheshbishnoi-com`, versions include `cb22e935` (first deploy) and later custom-domain deploy. `workers.dev`: `https://maheshbishnoi-com.bishnoimahesh96.workers.dev` (200).
+- Custom domains attached via `wrangler.jsonc` routes (`custom_domain: true`): apex + `www`. NOTE: first attach failed with 100117 because old `www` CNAME (`7a55619152cce3f07f5cf80bed71fb65`) was externally managed — deleted via `cf dns records delete ... --force`, redeployed OK.
+- Redirect: zone Single Redirect Rule in ruleset `6648eed8d5c443ee9d2fafd2a6425c12` ("Redirect www to apex", phase `http_request_dynamic_redirect`): `www` -> apex 301, path + query preserved. Verified: apex 200, `www/` and `www/blog/` 301.
+- DNS now (see `dns-backup-2026-10-15.txt`): Cloudflare-managed proxied AAAA (`100::` placeholder) for apex + `www`; TXT `v=spf1 -all`, `_dmarc`, `*._domainkey` untouched. No apex A record needed (edge resolves placeholder).
+- Remaining optional: edge Cache Rule (already seeing `cf-cache-status: HIT`), Web Analytics toggle (dashboard one-click).
+
 ## Resolved decisions
 - Location: this repo `maheshbishnoi.com` holds all code (plan copied here from `cf` folder).
 - Stack: Astro from start, `output: 'static'`, `dist/` deployed to Workers Static Assets.
