@@ -1,30 +1,30 @@
 ---
-const site = "https://maheshbishnoi.com";
+import Base from "../layouts/Base.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={site + "/"} />
-    <meta name="description" content="Mahesh Bishnoi — portfolio, blog, and resume." />
-    <title>Mahesh Bishnoi — Portfolio</title>
-    <style>
-      :root { color-scheme: light dark; }
-      body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
-      nav a { margin-right: 1rem; }
-    </style>
-  </head>
-  <body>
-    <nav><a href="/">Home</a><a href="/blog/">Blog</a><a href="/resume/">Resume</a></nav>
-    <h1>Mahesh Bishnoi</h1>
-    <p>Portfolio, blog, and resume. Served from Cloudflare Workers Static Assets.</p>
-    <ul>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/resume/">Resume</a></li>
+<Base title="Mahesh Bishnoi — Portfolio" canonical="https://maheshbishnoi.com/" current="home">
+  <div class="hero">
+    <h1>Hi, I'm Mahesh.</h1>
+    <p class="lead">I build things for the web — focused on performance, reliability, and clean engineering.</p>
+    <div class="btn-row">
+      <a class="btn" href="/resume/">View resume</a>
+      <a class="btn ghost" href="/blog/">Read the blog</a>
+    </div>
+  </div>
+
+  <section>
+    <h2>What I do</h2>
+    <div class="grid">
+      <div class="card"><h3>Web platforms</h3><p>Static sites and Workers-deployed apps that are fast by default.</p></div>
+      <div class="card"><h3>Cloud &amp; edge</h3><p>Cloudflare Workers, caching, and zero-origin architectures.</p></div>
+      <div class="card"><h3>Writing</h3><p>Notes on shipping, tooling, and the boring tech that works.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Latest writing</h2>
+    <ul class="post-list">
+      <li><a href="/blog/hello-world/">Hello world — what this site is for</a><time>Oct 2026</time></li>
     </ul>
-  </body>
-</html>
+  </section>
+</Base>

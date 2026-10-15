@@ -1,0 +1,43 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  current?: string;
+}
+
+const { title, description = "Mahesh Bishnoi — portfolio, blog, and resume.", canonical, current } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">Mahesh Bishnoi</a>
+        <nav>
+          <a href="/" aria-current={current === "home" ? "page" : undefined}>Home</a>
+          <a href="/blog/" aria-current={current === "blog" ? "page" : undefined}>Blog</a>
+          <a href="/resume/" aria-current={current === "resume" ? "page" : undefined}>Resume</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer>
+      <div class="wrap">© {new Date().getFullYear()} Mahesh Bishnoi · <a href="https://maheshbishnoi.com">maheshbishnoi.com</a></div>
+    </footer>
+  </body>
+</html>

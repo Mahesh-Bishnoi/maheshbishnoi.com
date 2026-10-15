@@ -1,21 +1,13 @@
 ---
+import Base from "../../layouts/Base.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="canonical" href="https://maheshbishnoi.com/blog/" />
-    <title>Blog — Mahesh Bishnoi</title>
-    <style>
-      body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
-      nav a { margin-right: 1rem; }
-    </style>
-  </head>
-  <body>
-    <nav><a href="/">Home</a><a href="/blog/">Blog</a><a href="/resume/">Resume</a></nav>
+<Base title="Blog — Mahesh Bishnoi" description="Notes on web engineering, Cloudflare, and shipping." canonical="https://maheshbishnoi.com/blog/" current="blog">
+  <section>
     <h1>Blog</h1>
-    <p>Posts coming soon.</p>
-  </body>
-</html>
+    <p>Notes on web engineering, Cloudflare, and shipping.</p>
+    <ul class="post-list">
+      <li><a href="/blog/hello-world/">Hello world — what this site is for</a><time>Oct 2026 · 2 min</time></li>
+    </ul>
+  </section>
+</Base>

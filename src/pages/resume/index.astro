@@ -1,21 +1,24 @@
 ---
+import Base from "../../layouts/Base.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="canonical" href="https://maheshbishnoi.com/resume/" />
-    <title>Resume — Mahesh Bishnoi</title>
-    <style>
-      body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
-      nav a { margin-right: 1rem; }
-    </style>
-  </head>
-  <body>
-    <nav><a href="/">Home</a><a href="/blog/">Blog</a><a href="/resume/">Resume</a></nav>
+<Base title="Resume — Mahesh Bishnoi" description="Resume of Mahesh Bishnoi." canonical="https://maheshbishnoi.com/resume/" current="resume">
+  <section class="prose">
     <h1>Resume</h1>
-    <p>Mahesh Bishnoi — resume coming soon.</p>
-  </body>
-</html>
+    <p>Short version below — full PDF on request.</p>
+    <div class="resume-item">
+      <h3>Focus</h3>
+      <div class="meta">Web platforms · Cloudflare edge · Performance</div>
+      <p>Building fast, reliable static sites and edge-deployed apps.</p>
+    </div>
+    <div class="resume-item">
+      <h3>Stack</h3>
+      <div class="meta">TypeScript · Astro · Cloudflare Workers · Vite</div>
+      <p>Type-safe, minimal-JS frontends with zero-origin hosting.</p>
+    </div>
+    <div class="resume-item">
+      <h3>Contact</h3>
+      <p>Add your email / GitHub / LinkedIn links here.</p>
+    </div>
+  </section>
+</Base>
